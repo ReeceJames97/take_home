@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:take_home_pj/utils/strings.dart';
 import 'package:get/get.dart';
-import 'package:take_home_pj/views/register_screen_view.dart';
+import 'package:take_home_pj/views/login_screen_view.dart';
 
-class LoginScreenView extends StatefulWidget {
+class RegisterScreenView extends StatefulWidget {
 
   @override
-  State<LoginScreenView> createState() => _LoginScreenViewState();
+  State<RegisterScreenView> createState() => _RegisterScreenViewState();
 }
 
-class _LoginScreenViewState extends State<LoginScreenView> {
+class _RegisterScreenViewState extends State<RegisterScreenView> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
   bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(STRINGS.login),
+        title: Text(STRINGS.register),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -37,11 +38,29 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                 SizedBox(height: 20),
 
                 ///Text
-                Text(STRINGS.login,
+                Text(STRINGS.registration,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),),
+
+                SizedBox(height: 10),
+
+                ///UserName
+                TextField(
+                  controller: userNameController,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: STRINGS.user_name,
+                      prefixIcon: Icon(Icons.person)
+                  ),
+                  style: TextStyle(
+                      fontSize: 15
+                  ),
+                ),
 
                 SizedBox(height: 10),
 
@@ -83,18 +102,19 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                         icon: Icon( isPasswordVisible ? Icons.visibility : Icons.visibility_off))
                   ),
                   style:  TextStyle(
-                    fontSize: 15,
+                    fontSize: 15
                   ),
                 ),
 
-                ///Login Btn
+                ///SignUp Btn
                 ElevatedButton.icon(
                     onPressed: (){
-                      print("Login");
-                    }, icon: Icon(Icons.login),
-                    label: Text(STRINGS.login),
+                      print("Sign Up");
+                    },
+                  icon: Icon(Icons.login),
+                    label: Text(STRINGS.signup),
                   style: ElevatedButton.styleFrom(
-                      elevation: 5,
+                    elevation: 5,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)
                     )
@@ -107,14 +127,14 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(STRINGS.new_user),
+                    Text(STRINGS.already_registered),
                     SizedBox(width: 5,),
                     InkWell(
                       onTap: (){
-                        print("Register");
-                        Get.off(RegisterScreenView());
+                        print("Login Now");
+                        Get.off(LoginScreenView());
                       },
-                      child: Text(STRINGS.register_now,
+                      child: Text(STRINGS.login_now,
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.bold
@@ -126,9 +146,9 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                 SizedBox(height: 10),
 
                 Text(STRINGS.or,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold
-                ),),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold
+                  ),),
 
                 SizedBox(height: 10),
 
@@ -151,15 +171,15 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset('assets/images/google.png',
-                          width: 40,
-                          height: 40,),
+                            width: 40,
+                            height: 40,),
                           SizedBox(width: 20),
                           Text(STRINGS.sign_in_with_google,
-                          style: TextStyle(
-                            color: Colors.white,
-                            // fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),),
+                            style: TextStyle(
+                              color: Colors.white,
+                              // fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),),
                         ],
                       ),
                     ),
