@@ -38,13 +38,21 @@ dependencies:
   #Animated Splash Screen
   animated_splash_screen:
 
-  cloud_firestore: ^2.5.0
   firebase_auth: ^3.0.2
   firebase_core: ^1.5.0
   google_fonts: ^2.1.0
-  google_sign_in: ^5.1.0
-  sign_button: ^2.0.1
-  flutter_svg: ^0.22.0
+  google_sign_in: ^5.3.3
+
+  #for api call
+  dio: ^4.0.6
+  logger: ^0.8.3
+  retrofit:
+
+  flutterfire_cli: ^0.2.2+2
+  get_storage: ^2.0.2
+  carousel_slider: ^3.0.0
+  cached_network_image: ^3.0.0
+  shimmer: ^2.0.0
 
   #GetX
   get:
@@ -52,6 +60,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  retrofit_generator:
+  json_serializable:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -102,3 +113,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+module:
+  androidX: true

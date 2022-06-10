@@ -17,4 +17,7 @@ class STRINGS {
   static const String signup = "Sign Up";
   static const String or = "or";
   static const String sign_in_with_google = "Sign in with Google";
+  static const String home = "Home";
+  static const String profile = "Profile";
+  static const String logout = "Logout";
 }
