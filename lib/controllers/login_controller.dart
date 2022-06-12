@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,6 +7,7 @@ import 'package:take_home_pj/utils/custom_full_screen_dialog.dart';
 class LoginController extends GetxController {
   HomeController homeController = Get.find<HomeController>();
   var isPasswordHidden = true.obs;
+
   @override
   void onInit() async {
     super.onInit();
@@ -24,12 +24,12 @@ class LoginController extends GetxController {
   void login() async {
     CustomFullScreenDialog.showDialog();
     GoogleSignInAccount? googleSignInAccount =
-    await homeController.googleSign.signIn();
+        await homeController.googleSign.signIn();
     if (googleSignInAccount == null) {
       CustomFullScreenDialog.cancelDialog();
     } else {
       GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount.authentication;
+          await googleSignInAccount.authentication;
       OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
           accessToken: googleSignInAuthentication.accessToken,
           idToken: googleSignInAuthentication.idToken);

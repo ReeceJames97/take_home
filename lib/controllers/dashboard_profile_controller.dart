@@ -5,6 +5,7 @@ import 'package:take_home_pj/controllers/home_controller.dart';
 class DashboardProfileController extends GetxController {
   HomeController homeController = Get.find<HomeController>();
   late User user;
+
   @override
   void onInit() async {
     super.onInit();

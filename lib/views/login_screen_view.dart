@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:take_home_pj/controllers/login_controller.dart';
 import 'package:take_home_pj/utils/strings.dart';
+import 'package:take_home_pj/utils/toast.dart';
 import 'package:take_home_pj/views/register_screen_view.dart';
 
 class LoginScreenView extends StatelessWidget {
@@ -11,7 +12,7 @@ class LoginScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LoginController loginController =
-    Get.put(LoginController(), permanent: false);
+        Get.put(LoginController(), permanent: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(STRINGS.login),
@@ -60,36 +61,34 @@ class LoginScreenView extends StatelessWidget {
                 ),
 
                 ///Password
-                Obx(() =>
-                TextField(
-                  controller: passwordController,
-                  keyboardType: TextInputType.text,
-                  obscureText: loginController.isPasswordHidden.value,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    labelText: STRINGS.password,
-                    prefixIcon: Icon(Icons.key),
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            // controller.isPasswordHidden.value = !controller.isPasswordHidden.value;
-                            loginController.isPasswordHidden.value = !loginController.isPasswordHidden.value;
-                          },
-                          // icon: Icon(controller.isPasswordHidden.value
-                          icon: Icon(loginController.isPasswordHidden.value
-                              ? Icons.visibility
-                              : Icons.visibility_off))
-                  ),
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                )
-                ),
+                Obx(() => TextField(
+                      controller: passwordController,
+                      keyboardType: TextInputType.text,
+                      obscureText: loginController.isPasswordHidden.value,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          labelText: STRINGS.password,
+                          prefixIcon: Icon(Icons.key),
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                // controller.isPasswordHidden.value = !controller.isPasswordHidden.value;
+                                loginController.isPasswordHidden.value =
+                                    !loginController.isPasswordHidden.value;
+                              },
+                              // icon: Icon(controller.isPasswordHidden.value
+                              icon: Icon(loginController.isPasswordHidden.value
+                                  ? Icons.visibility
+                                  : Icons.visibility_off))),
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    )),
 
                 ///Login Btn
                 ElevatedButton.icon(
                   onPressed: () {
-                    print("Login");
+                    showToast(STRINGS.not_available_this_fun_yet);
                   },
                   icon: Icon(Icons.login),
                   label: Text(STRINGS.login),
@@ -138,7 +137,6 @@ class LoginScreenView extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     loginController.login();
-                    print("Sign in with google");
                   },
                   child: Container(
                     // margin: EdgeInsets.all(10),

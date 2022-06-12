@@ -6,14 +6,13 @@ import 'package:take_home_pj/views/dashboard_home_view.dart';
 import 'package:take_home_pj/views/dashboard_profile_view.dart';
 
 class DashBoardView extends GetView<BtmNavBarController> {
-
   final TextStyle unselectedLabelStyle = TextStyle(
       color: Colors.white.withOpacity(0.5),
       fontWeight: FontWeight.w500,
       fontSize: 12);
 
   final TextStyle selectedLabelStyle =
-  TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+      TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 12);
 
   buildBottomNavigationMenu(context, landingPageController) {
     return Obx(() => MediaQuery(
@@ -27,7 +26,7 @@ class DashBoardView extends GetView<BtmNavBarController> {
             currentIndex: landingPageController.tabIndex.value,
             backgroundColor: Colors.blueAccent,
             unselectedItemColor: Colors.white.withOpacity(0.5),
-            selectedItemColor: Colors.white,
+            selectedItemColor: Colors.black,
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
             items: [
@@ -60,20 +59,14 @@ class DashBoardView extends GetView<BtmNavBarController> {
 
   @override
   Widget build(BuildContext context) {
-    // final BtmNavBarController btmNavBarController =
-    // Get.put(BtmNavBarController(), permanent: false);
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: buildBottomNavigationMenu(context, controller),
         body: Obx(() => IndexedStack(
-          index: controller.tabIndex.value,
-          children: [
-            DashboardHomeView(),
-            DashboardProfileView()
-          ],
-        )),
+              index: controller.tabIndex.value,
+              children: [DashboardHomeView(), DashboardProfileView()],
+            )),
       ),
-
     );
   }
 }

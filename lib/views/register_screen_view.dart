@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:take_home_pj/controllers/login_controller.dart';
 import 'package:take_home_pj/utils/strings.dart';
+import 'package:take_home_pj/utils/toast.dart';
 import 'package:take_home_pj/views/login_screen_view.dart';
 
 class RegisterScreenView extends StatelessWidget {
@@ -12,7 +13,7 @@ class RegisterScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LoginController loginController =
-    Get.put(LoginController(), permanent: false);
+        Get.put(LoginController(), permanent: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(STRINGS.register),
@@ -35,7 +36,7 @@ class RegisterScreenView extends StatelessWidget {
 
                 ///Text
                 Text(
-                  STRINGS.registration,
+                  STRINGS.register,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -75,8 +76,7 @@ class RegisterScreenView extends StatelessWidget {
                 ),
 
                 ///Password
-                Obx(() =>
-                TextField(
+                Obx(() => TextField(
                       controller: passwordController,
                       keyboardType: TextInputType.text,
                       obscureText: loginController.isPasswordHidden.value,
@@ -88,21 +88,20 @@ class RegisterScreenView extends StatelessWidget {
                           suffixIcon: IconButton(
                               onPressed: () {
                                 // controller.isPasswordHidden.value = !controller.isPasswordHidden.value;
-                                loginController.isPasswordHidden.value = !loginController.isPasswordHidden.value;
+                                loginController.isPasswordHidden.value =
+                                    !loginController.isPasswordHidden.value;
                               },
                               // icon: Icon(controller.isPasswordHidden.value
                               icon: Icon(loginController.isPasswordHidden.value
                                   ? Icons.visibility
                                   : Icons.visibility_off))),
                       style: TextStyle(fontSize: 15),
-                    )
-                ),
-
+                    )),
 
                 ///SignUp Btn
                 ElevatedButton.icon(
                   onPressed: () {
-                    print("Sign Up");
+                    showToast(STRINGS.not_available_this_fun_yet);
                   },
                   icon: Icon(Icons.login),
                   label: Text(STRINGS.signup),
@@ -124,7 +123,6 @@ class RegisterScreenView extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        print("Login Now");
                         Get.off(LoginScreenView());
                       },
                       child: Text(
