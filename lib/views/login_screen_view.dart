@@ -15,6 +15,7 @@ class LoginScreenView extends StatelessWidget {
         Get.put(LoginController(), permanent: false);
     return Scaffold(
       appBar: AppBar(
+        ///Hello
         title: Text(STRINGS.login),
       ),
       body: Center(
